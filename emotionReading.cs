@@ -9,7 +9,7 @@ using System.Collections.Generic;
 public class emotionReading : MonoBehaviour
 {
     public static emotionReading Instance { get; private set; }
-    string EmotionAPIKey = "c113d34d43f64934b89b80b09d7bfdd1";
+    string EmotionAPIKey = "[key]";
     public GameObject NewText;
     IEnumerator<object> PostToEmotionAPI(byte[] imageData)
     {
@@ -54,27 +54,27 @@ public class emotionReading : MonoBehaviour
                 }
             }
             TextMesh t = NewText.GetComponent<TextMesh>();
-            t.text = noun(highestEmote);
+            t.text = adjective(highestEmote);
         }
     
 
 }
     //looks us adjectives (case insensitive) in dict
     //assumes adjective is valid
-    public string noun(string adjective)
+    public string adjective(string noun)
     {
-        Dictionary<string,string> adj_to_noun = new Dictionary<string,string>();
+        Dictionary<string,string> noun_to_adj = new Dictionary<string,string>();
 
-        adj_to_noun.Add("anger","Angry");
-        adj_to_noun.Add("contempt","Contempt");
-        adj_to_noun.Add("disgust","Disgusted");
-        adj_to_noun.Add("sadness","Sad");
-        adj_to_noun.Add("neutral","Neutral");
-        adj_to_noun.Add("happiness","Happy");
-        adj_to_noun.Add("fear","Afraid");
-        adj_to_noun.Add("surprise","Surprise");
+        noun_to_adj.Add("anger","Angry");
+        noun_to_adj.Add("contempt","Contempt");
+        noun_to_adj.Add("disgust","Disgusted");
+        noun_to_adj.Add("sadness","Sad");
+        noun_to_adj.Add("neutral","Neutral");
+        noun_to_adj.Add("happiness","Happy");
+        noun_to_adj.Add("fear","Afraid");
+        noun_to_adj.Add("surprise","Surprise");
         // assume adjective in dict
-        return adj_to_noun[adjective.toLower()];
+        return noun_to_adj[noun.toLower()];
     }
     
 
