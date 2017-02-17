@@ -59,22 +59,22 @@ public class emotionReading : MonoBehaviour
     
 
 }
-    //Uses distinct third letters of adjectives to create nouns
+    //looks us adjectives (case insensitive) in dict
+    //assumes adjective is valid
     public string noun(string adjective)
     {
-        switch (adjective[2])
-        {
-            case 'g': return "Angry";
-            case 'n': return "Contempt";
-            case 's': return "Disgusted";
-            case 'd': return "Sad";
-            case 'u': return "Neutral";
-            case 'p': return "Happy";
-            case 'a': return "Afraid";
-            case 'r': return "Surprised";
-        }
-        return "Neutral";
+        Dictionary<string,string> adj_to_noun = new Dictionary<string,string>();
 
+        adj_to_noun.Add("anger","Angry");
+        adj_to_noun.Add("contempt","Contempt");
+        adj_to_noun.Add("disgust","Disgusted");
+        adj_to_noun.Add("sadness","Sad");
+        adj_to_noun.Add("neutral","Neutral");
+        adj_to_noun.Add("happiness","Happy");
+        adj_to_noun.Add("fear","Afraid");
+        adj_to_noun.Add("surprise","Surprise");
+        // assume adjective in dict
+        return adj_to_noun[adjective.toLower()];
     }
     
 
